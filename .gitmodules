@@ -1,0 +1,3 @@
+[submodule "shared/openbsm"]
+	path = shared/openbsm
+	url = git@github.com:0mp/openbsm.git
