@@ -13,6 +13,10 @@ Vagrant.configure("2") do |config|
         s.path = "provision/build-openbsm.sh"
     end
 
+    config.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+        s.path = "provision/rebuild-openbsm.sh"
+    end
+
     config.vm.provision "install-auditd", type: "shell", run: "never", privileged: "true" do |s|
         s.path = "provision/install-auditd.sh"
     end
