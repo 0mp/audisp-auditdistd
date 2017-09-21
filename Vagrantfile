@@ -39,5 +39,9 @@ Vagrant.configure("2") do |config|
         linux.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
             s.path = "provision/linux/rebuild-openbsm.sh"
         end
+
+        linux.vm.provision "run", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/linux/run.sh"
+        end
     end
 end
