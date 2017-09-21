@@ -16,6 +16,10 @@ Vagrant.configure("2") do |config|
 
         freebsd.vm.base_mac = "020027D14C66"
         freebsd.ssh.shell = "sh"
+
+        freebsd.vm.provision "configure-freebsd", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/configure-freebsd.sh"
+        end
     end
 
     config.vm.define "linux" do |linux|
