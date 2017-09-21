@@ -28,8 +28,8 @@ Vagrant.configure("2") do |config|
         linux.vm.synced_folder "./shared", "/shared"
         linux.vm.hostname = "linux"
 
-        linux.vm.provision "prepare-openbsm", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/linux/prepare-openbsm.sh"
+        linux.vm.provision "configure-linux", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/linux/configure-linux.sh"
         end
 
         linux.vm.provision "build-openbsm", type: "shell", run: "never", privileged: "true" do |s|
@@ -38,10 +38,6 @@ Vagrant.configure("2") do |config|
 
         linux.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
             s.path = "provision/linux/rebuild-openbsm.sh"
-        end
-
-        linux.vm.provision "install-auditd", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/linux/install-auditd.sh"
         end
     end
 end
