@@ -18,7 +18,7 @@ Vagrant.configure("2") do |config|
         freebsd.ssh.shell = "sh"
 
         freebsd.vm.provision "configure-freebsd", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/configure-freebsd.sh"
+            s.path = "provision/freebsd/configure-freebsd.sh"
         end
     end
 
@@ -29,19 +29,19 @@ Vagrant.configure("2") do |config|
         linux.vm.hostname = "linux"
 
         linux.vm.provision "prepare-openbsm", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/prepare-openbsm.sh"
+            s.path = "provision/linux/prepare-openbsm.sh"
         end
 
         linux.vm.provision "build-openbsm", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/build-openbsm.sh"
+            s.path = "provision/linux/build-openbsm.sh"
         end
 
         linux.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/rebuild-openbsm.sh"
+            s.path = "provision/linux/rebuild-openbsm.sh"
         end
 
         linux.vm.provision "install-auditd", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/install-auditd.sh"
+            s.path = "provision/linux/install-auditd.sh"
         end
     end
 end
