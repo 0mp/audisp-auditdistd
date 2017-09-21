@@ -2,7 +2,7 @@
 
 set -eu
 
-confdir=/shared
+confdir=/vagrant
 key=auditdistd.key.pem
 cert=auditdistd.cert.pem
 

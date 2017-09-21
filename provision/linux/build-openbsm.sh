@@ -2,6 +2,6 @@
 
 set -e
 
-cd /shared/openbsm
+cd /vagrant/openbsm
 ./configure
 make

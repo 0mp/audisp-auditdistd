@@ -2,7 +2,7 @@
 
 set -e
 
-cd /shared/openbsm
+cd /vagrant/openbsm
 make maintainer-clean || :
 ./configure
 make
