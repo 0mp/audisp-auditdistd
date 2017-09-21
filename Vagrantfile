@@ -17,8 +17,12 @@ Vagrant.configure("2") do |config|
         freebsd.vm.base_mac = "020027D14C66"
         freebsd.ssh.shell = "sh"
 
-        freebsd.vm.provision "configure-freebsd", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/freebsd/configure-freebsd.sh"
+        freebsd.vm.provision "configure", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/freebsd/configure.sh"
+        end
+
+        freebsd.vm.provision "run", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/freebsd/run.sh"
         end
     end
 
@@ -28,8 +32,8 @@ Vagrant.configure("2") do |config|
         linux.vm.synced_folder "./shared", "/shared"
         linux.vm.hostname = "linux"
 
-        linux.vm.provision "configure-linux", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = "provision/linux/configure-linux.sh"
+        linux.vm.provision "configure", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/linux/configure.sh"
         end
 
         linux.vm.provision "build-openbsm", type: "shell", run: "never", privileged: "true" do |s|
