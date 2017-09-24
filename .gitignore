@@ -1,7 +1,7 @@
 .vagrant
-shared/auditdistd-receiver.conf
-shared/auditdistd-sender.conf
-shared/auditdistd.cert.pem
-shared/auditdistd.conf
-shared/auditdistd.key.pem
+auditdistd-receiver.conf
+auditdistd-sender.conf
+auditdistd.cert.pem
+auditdistd.conf
+auditdistd.key.pem
 
