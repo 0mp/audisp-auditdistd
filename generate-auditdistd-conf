@@ -2,7 +2,7 @@
 
 openssl req -x509 -nodes -newkey rsa:4096 -days 1825 -batch -out ./auditdistd.cert.pem -keyout ./auditdistd.key.pem
 
-fingerprint="(openssl x509 -in ./auditdistd.cert.pem -noout -fingerprint -sha256 | awk -F '[ =]' '{printf("%s=%s\n", $1, $3)}')"
+fingerprint="$(openssl x509 -in ./auditdistd.cert.pem -noout -fingerprint -sha256 | awk -F '[ =]' '{printf("%s=%s\n", $1, $3)}')"
 password="$(dd if=/dev/urandom bs=32 count=1 | openssl base64 | cut -b -32)"
 
 cat > auditdistd-receiver.conf << EOS
