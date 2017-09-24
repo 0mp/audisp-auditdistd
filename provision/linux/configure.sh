@@ -18,6 +18,8 @@ if ! grep ^auditdistd /etc/passwd 1>/dev/null
 then
     useradd -m auditdistd
 fi
-mkdir -p /var/log/audit/dist
-chmod 770 /var/log/audit/dist
-chown auditdistd:root /var/log/audit/dist
+
+distdir=/var/log/audit/auditdistd
+mkdir -p "$distdir"
+chmod 770 "$distdir"
+chown auditdistd:root "$distdir"
