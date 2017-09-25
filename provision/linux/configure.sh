@@ -1,9 +1,9 @@
 #! /bin/sh -
 
 required=
-for dep in libssl-dev byacc flex auditd
+for dep in libssl-dev byacc bison flex auditd
 do
-    if ! dpkg-query -l "$dep" 1>/dev/null 2>&1
+    if ! dpkg-query -s "$dep" 1>/dev/null 2>&1
     then
         required="$required $dep"
     fi
