@@ -29,6 +29,7 @@ Vagrant.configure("2") do |config|
         linux.vm.network "private_network", ip: "192.168.10.12"
         linux.vm.synced_folder ".", "/vagrant"
         linux.vm.hostname = "linux"
+        linux.vm.post_up_message = ""
 
         linux.vm.provision "configure", type: "shell", run: "never", privileged: "true" do |s|
             s.path = "provision/linux/configure.sh"
