@@ -1,0 +1,4 @@
+#! /bin/sh -
+
+vagrant snapshot pop --no-privision --no-delete freebsd
+vagrant snapshot pop --no-privision --no-delete linux
