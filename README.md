@@ -18,3 +18,8 @@ Pushing audit logs from Linux over to FreeBSD using auditdistds.
 vagrant provision freebsd --provision-with run
 vagrant provision linux --provision-with run
 ```
+
+## Dependencies
+
+- `rsync`
+- `vagrant`
