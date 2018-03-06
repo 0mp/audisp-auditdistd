@@ -1,3 +1,9 @@
-[submodule "openbsm"]
-	path = openbsm
-	url = https://github.com/0mp/openbsm.git
+[submodule "linux-sender/openbsm"]
+	path = linux-sender/openbsm
+	url = https://github.com/0mp/openbsm
+[submodule "freebsd-sender/openbsm"]
+	path = freebsd-sender/openbsm
+	url = https://github.com/0mp/openbsm
+[submodule "freebsd-receiver/openbsm"]
+	path = freebsd-receiver/openbsm
+	url = https://github.com/0mp/openbsm

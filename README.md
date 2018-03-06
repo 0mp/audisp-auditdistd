@@ -10,7 +10,7 @@ Pushing audit logs from Linux over to FreeBSD using auditdistds.
 ./generate-auditdistd-conf
 ./do-vagrant-up
 ./do-provision
-vagrant provision linux-sender --provision-with build-openbsm
+vagrant provision linux-sender --provision-with rebuild-openbsm
 ```
 
 ### Run auditdistds
@@ -31,6 +31,8 @@ There are 3 machines:
 The goal is to make linux-sender work flawlessly with freebsd-receiver.
 
 freebsd-sender is here for debugging purposes.
+
+Every machine has its own OpenBSM branch.
 
 ## Dependencies
 

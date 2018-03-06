@@ -35,8 +35,8 @@ Vagrant.configure("2") do |config|
             s.path = host.vm.hostname + "/provision/configure.sh"
         end
 
-        host.vm.provision "build-openbsm", type: "shell", run: "never", privileged: "true" do |s|
-            s.path = host.vm.hostname + "/provision/build-openbsm.sh"
+        host.vm.provision "make-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = host.vm.hostname + "/provision/make-openbsm.sh"
         end
 
         host.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
