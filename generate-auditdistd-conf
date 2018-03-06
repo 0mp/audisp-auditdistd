@@ -11,6 +11,10 @@ receiver {
 		remote "tls://192.168.10.12"
 		password "$password"
 	}
+	host "fender" {
+		remote "tls://192.168.10.13"
+		password "$password"
+	}
 }
 EOS
 
