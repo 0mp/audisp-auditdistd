@@ -2,7 +2,7 @@
 
 set -e
 
-cd /vagrant/freebsd-sender/openbsm
+cd /vagrant/freebsd-receiver/openbsm
 make maintainer-clean || :
 ./configure
 make
