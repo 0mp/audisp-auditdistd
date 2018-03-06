@@ -1,30 +1,52 @@
 #! /bin/sh -
 
-openssl req -x509 -nodes -newkey rsa:4096 -days 1825 -batch -out ./auditdistd.cert.pem -keyout ./auditdistd.key.pem
+set -eu
 
-fingerprint="$(openssl x509 -in ./auditdistd.cert.pem -noout -fingerprint -sha256 | awk -F '[ =]' '{printf("%s=%s\n", $1, $3)}')"
+configdir=./auditdistd-configs
+cert="$configdir/auditdistd.cert.pem"
+key="$configdir/auditdistd.key.pem"
+
+if [ ! -d "$configdir" ] || [ ! -w "$configdir" ]
+then
+	rm -rf -- "$configdir"
+	mkdir -p "$configdir"
+fi
+
+openssl req -x509 -nodes -newkey rsa:4096 -days 1825 -batch -out "$cert" -keyout "$key"
+
+fingerprint="$(openssl x509 -in "$cert" -noout -fingerprint -sha256 | awk -F '[ =]' '{printf("%s=%s\n", $1, $3)}')"
 password="$(dd if=/dev/urandom bs=32 count=1 | openssl base64 | cut -b -32)"
 
-cat > auditdistd-receiver.conf << EOS
+cat > "$configdir/auditdistd-freebsd-receiver.conf" << EOS
 receiver {
-	host "linux" {
+	host "linux-sender" {
 		remote "tls://192.168.10.12"
 		password "$password"
 	}
-	host "fender" {
+	host "freebsd-sender" {
 		remote "tls://192.168.10.13"
 		password "$password"
 	}
 }
 EOS
 
-cat > auditdistd-sender.conf << EOS
+cat > "$configdir/auditdistd-linux-sender.conf" << EOS
 sender {
-	host "freebsd" {
+	host "freebsd-receiver" {
 		remote "tls://192.168.10.11"
 		fingerprint "$fingerprint"
 		password "$password"
 		directory "/var/log/audit/auditdistd"
+	}
+}
+EOS
+
+cat > "$configdir/auditdistd-freebsd-sender.conf" << EOS
+sender {
+	host "freebsd-receiver" {
+		remote "tls://192.168.10.11"
+		fingerprint "$fingerprint"
+		password "$password"
 	}
 }
 EOS

@@ -1,4 +1,3 @@
 #! /bin/sh -
 
-vagrant provision linux --provision-with configure
-vagrant provision freebsd --provision-with configure
+vagrant provision freebsd-receiver freebsd-sender linux-sender --provision-with configure

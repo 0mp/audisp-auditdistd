@@ -1,4 +1,5 @@
 #! /bin/sh -
 
-vagrant snapshot pop --no-privision --no-delete freebsd
-vagrant snapshot pop --no-privision --no-delete linux
+vagrant snapshot pop --no-privision --no-delete freebsd-receiver
+vagrant snapshot pop --no-privision --no-delete freebsd-sender
+vagrant snapshot pop --no-privision --no-delete linux-sender

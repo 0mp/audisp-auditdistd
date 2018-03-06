@@ -1,7 +1,2 @@
 .vagrant
-auditdistd-receiver.conf
-auditdistd-sender.conf
-auditdistd.cert.pem
-auditdistd.conf
-auditdistd.key.pem
-
+auditdistd-configs/

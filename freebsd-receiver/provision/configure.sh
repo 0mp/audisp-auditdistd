@@ -2,7 +2,7 @@
 
 set -eu
 
-confdir=/vagrant
+confdir=/vagrant/auditdistd-configs
 key=auditdistd.key.pem
 cert=auditdistd.cert.pem
 
@@ -10,7 +10,7 @@ cert=auditdistd.cert.pem
 chmod 0700 /var/audit/remote
 chown auditdistd:wheel /var/audit/remote
 
-cp "$confdir/auditdistd-receiver.conf" /etc/security/auditdistd.conf
+cp "$confdir/auditdistd-freebsd-receiver.conf" /etc/security/auditdistd.conf
 chmod 0600 /etc/security/auditdistd.conf
 
 cp "$confdir/$key" "/etc/security/$key"
