@@ -1,5 +1,8 @@
 #! /bin/sh -
 
+# https://serverfault.com/a/670688/291898
+export DEBIAN_FRONTEND=noninteractive
+
 required=
 for dep in libssl-dev byacc bison flex auditd
 do
