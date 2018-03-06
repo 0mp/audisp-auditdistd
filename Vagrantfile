@@ -22,6 +22,14 @@ Vagrant.configure("2") do |config|
         host.vm.provision "run", type: "shell", run: "never", privileged: "true" do |s|
             s.path = host.vm.hostname + "/provision/run.sh"
         end
+
+        host.vm.provision "make-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = host.vm.hostname + "/provision/make-openbsm.sh"
+        end
+
+        host.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = host.vm.hostname + "/provision/rebuild-openbsm.sh"
+        end
     end
 
     config.vm.define "linux-sender" do |host|
@@ -60,6 +68,14 @@ Vagrant.configure("2") do |config|
 
         host.vm.provision "configure", type: "shell", run: "never", privileged: "true" do |s|
             s.path = host.vm.hostname + "/provision/configure.sh"
+        end
+
+        host.vm.provision "make-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = host.vm.hostname + "/provision/make-openbsm.sh"
+        end
+
+        host.vm.provision "rebuild-openbsm", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = host.vm.hostname + "/provision/rebuild-openbsm.sh"
         end
     end
 end
