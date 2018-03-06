@@ -47,4 +47,19 @@ Vagrant.configure("2") do |config|
             s.path = "provision/linux/run.sh"
         end
     end
+
+    # FreeBSD sender.
+    config.vm.define "fender" do |freebsd|
+        fender.vm.box = "freebsd/FreeBSD-11.1-RELEASE"
+        fender.vm.network "private_network", ip: "192.168.10.13"
+        fender.vm.synced_folder ".", "/vagrant", type: "rsync"
+        fender.vm.hostname = "fender"
+
+        fender.vm.base_mac = "020027D14C00"
+        fender.ssh.shell = "sh"
+
+        fender.vm.provision "configure", type: "shell", run: "never", privileged: "true" do |s|
+            s.path = "provision/fender/configure.sh"
+        end
+    end
 end
