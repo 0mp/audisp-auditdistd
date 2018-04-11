@@ -1,3 +1,12 @@
 #! /bin/sh -
 
-vagrant up --no-provision
+vagrant up freebsd-receiver --no-provision &
+vagrant up linux-sender --no-provision &
+case "$1" in
+    --minimal)
+        ;;
+    *)
+        vagrant up freebsd-sender --no-provision &
+        ;;
+esac
+wait
