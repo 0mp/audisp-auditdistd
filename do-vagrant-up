@@ -3,10 +3,10 @@
 vagrant up freebsd-receiver --no-provision &
 vagrant up linux-sender --no-provision &
 case "$1" in
-    --minimal)
+    --full)
+        vagrant up freebsd-sender --no-provision &
         ;;
     *)
-        vagrant up freebsd-sender --no-provision &
         ;;
 esac
 wait
