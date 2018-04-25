@@ -1,6 +1,6 @@
 # audisp-auditdistd
 
-Pushing audit logs from Linux over to FreeBSD using auditdistds.
+Pushing audit logs from Linux over to FreeBSD using auditdistd daemons.
 
 ## Usage
 
